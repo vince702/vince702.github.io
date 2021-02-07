@@ -124,12 +124,6 @@ input.addEventListener("keyup", function(event) {
 });
 
 
-async function getData(url) {
-  const response = await fetch(url);
- 
-  return response.json();
-}
-
 
 function myFunction() {
   var x = document.getElementById("myInput");
@@ -142,7 +136,7 @@ function myFunction() {
     var api_url = "https://svhd0fm7qh.execute-api.us-east-2.amazonaws.com/default/actual_price?listing_id="
     api_url += listing_id
 
-    var data_json = getData(api_url);
+ 
     
 
     document.getElementById("demo").innerHTML = api_url;
