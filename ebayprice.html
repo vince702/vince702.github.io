@@ -9,6 +9,29 @@
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.loader {
+  border: 7px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 7px solid #3498db;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  margin: auto;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
 .back {
   height: 200px;
    /* For browsers that do not support gradients */
@@ -151,6 +174,9 @@ function myFunction() {
   var text = x.value
   var patt = /\d{12}/i;
   var listing_id = text.match(patt);
+
+  document.getElementById("demo").innerHTML = '<div class="loader"></div>'
+
 
   if (listing_id ){
     
