@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto ;
+  background-color: white;
+
+  padding: 10px;
+  min-width: 681px;
+  max-width: 681px;
+  position:absolute;
+
+  top:567px;
+  left:70px;
+}
+
+.grid-item {
+  background-color: white;
+  padding-top:20px;
+  padding-bottom:20px;
+  
+  font-size: 30px;
+  
+}
+
+.description{
+	font-family: times;
+	font-size: 17px;
+}
+
+.white{
+  background-color: white;
+  min-width: 800px;
+  max-width:800px;
+  padding: 20px;
+
+}
+
+
+.banner{
+
+  padding: 250px;
+  min-width: 870px;
+  max-width: 870px;
+  font-size: 40px;
+  color: cornsilk;
+
+
+}
+
+.banner2{
+  background-color: white;
+  padding-top:20px;
+  padding-bottom:20px;
+  min-width: 870px;
+  max-width:870px;
+  font-size: 20px;
+  position:absolute;
+  padding-left: 305px;
+  top: 520px;
+  text-decoration-style: double; 
+  text-decoration-line: underline; 
+  font-family: "Comic Sans MS", "Comic Sans";
+  color:purple;
+}
+
+
+.fake_button{
+	background-color:white;
+	min-width: 134px;
+	text-indent:8px;
+ 	max-width:134px;
+ 	color:black;
+ 	font-size:11px;
+ 	top:340px;
+ 	left: 490px;
+ 	position:absolute;
+ 	padding: 8px;
+ 	box-shadow: 
+ 	0 0 0 1px black,
+ 	0 0 0 2px white,
+ 	0 0 0 3px black;
+ 	font-family: sans-serif,Arial, Helvetica;
+ 	cursor: pointer;
+}
+
+.white_bar{
+  background-color: white;
+  min-width: 1000px;
+  max-width:1000px;
+  padding: 10px;
+  top: 95px;
+  position:absolute;
+
+
+}
+.title{
+ 
+  top: -10px;
+  left:0px;
+  position:absolute;
+  font-size: 33px;
+  padding-bottom: 19px;
+  color: darkblue;
+}
+
+.center {
+	text-align: center;
+	text-indent: -30px;
+}
+
+
+
+a:link {
+  text-decoration: none;
+}
+
+.navbar{
+
+	position:absolute;
+	top: 60px;
+	left: 0px;
+	padding-top: 12px;
+	padding-bottom:12px;
+	padding-left: 80px;
+	padding-right:700px;
+	min-width: 879px;
+  max-width:870px;
+  background-color: bisque;
+ font-size: 15.35px;
+  font-family: sans-serif,Arial, Helvetica;
+
+}
+
+body  {
+  background-image: url("https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2019%2F01%2Fopentable-scenic-restaurants-marine-room-FT-BLOG0818.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top 0px left 80px;fixed ;
+  min-width: 700px;
+  max-width:700px;
+  background-size:700px 550px;
+  overflow-x: hidden;
+}
+</style>
+</head>
+<body>
+
+
+<div class="center white title"> <b>Trojan Caf&eacute; </b></div>
+<div class="white_bar center">&nbsp; </div>
+
+<div class="navbar"> 
+
+	<a href="HW3_home.html">Home &nbsp;</a>
+	<a href="#Italian">Italian  &nbsp;</a>
+	<a href="#Indian">Indian &nbsp;</a>
+	<a href="#Japanese">Japanese &nbsp;</a>
+	<a href="#Desserts">Desserts &nbsp;</a>
+	<a href="welcome.html" target="_blank">About &nbsp;</a>
+	<a href="welcome.html" target="_blank">Contact &nbsp;&nbsp;</a>
+
+</div>
+
+
+<div class="banner">
+
+	<b>Enjoy the Scenic View!!</b>
+	
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   <div class="fake_button">Book Your Reservation</div>
+
+</div>
+
+
+<div class="banner2"> <b>Explore Our Delicious Cusines</b> </div>
+
+<div id="Italian" class="grid-container">
+  <div class="grid-item">
+  	<img style="border: 10px solid MistyRose;" src="https://fondue.bg/wp-content/uploads/2019/09/italiancuisine.jpg" alt="Italian" width="337" height="250">
+  </div>
+  <div class="grid-item description" > <br> <br> <br> <br>
+  	&nbsp; &nbsp; &nbsp; &nbsp;  <span style="color:blue; padding-left:4px;"> <b>Italy's Finest: </b></span>
+  	<br>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;From our Lasagna to our Protein Penne, we  
+    <br> 
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;have delicious options for every taste!
+
+
+  </div>
+
+
+
+
+
+  <div id="Indian" class="grid-item description">
+  	<br> <br> <br> <br>
+  	<span style="color:blue; "> <b>India's Flavors: </b></span>
+  	<br>
+    Our dishes are blended with masterful
+    <br> 
+    savory spices
+  </div>  
+
+  <div class="grid-item"><img style="border: 10px solid lightblue;" src="https://www.nydailynews.com/resizer/5tpt1UexLejYzkm3SE6pv7gs5H0=/1200x0/center/middle/arc-anglerfish-arc2-prod-tronc.s3.amazonaws.com/public/PTHIHN5WMZEFDFLF5YRQCOQVMY.jpg" alt="Indian" width="337" height="250"></div>
+
+
+
+  <div id="Japanese" class="grid-item"><img style="border: 10px solid MistyRose;" src="https://www.agoda.com/wp-content/uploads/2018/07/Experience-Tokyo_food-and-drink_Sushi_Japan.jpg" alt="Japanese" width="337" height="250"></div>
+  <div class="grid-item description" > <br> <br> <br> <br>
+  	&nbsp; &nbsp; &nbsp; &nbsp;  <span style="color:blue; padding-left:4px;"> <b>Japanese Cuisine: </b></span>
+  	<br>
+    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Delicious dining options from Sake too Sushi
+
+  </div>
+
+
+
+
+  <div id="Desserts" class="grid-item description">
+  	<br> <br> <br> <br>
+  	<span style="color:blue; "> <b>Desserts: </b></span>
+  	<br>
+    From Italian Tiramisu to Indian Gulab
+    <br> 
+    Jamun
+  </div>  
+  <div class="grid-item"><img style="border: 10px solid lightblue;" src="https://cdn1.matadornetwork.com/blogs/1/2018/05/shutterstock_758819113-1200x853.jpg" alt="Desserts" width="337" height="250"></div>
+</div>
+
+
+
+
+
+</body>
+</html>
