@@ -10,7 +10,10 @@ position:relative;
 
 min-width: 1000px;
 }
-
+a {
+  color: red;
+  text-decoration: none;
+}
 
 .slideshowtitle{
   padding-left: 340px;
@@ -206,6 +209,15 @@ min-width: 1000px;
 }
 
 
+.infoCircle {
+    border-radius: 50%;
+    width: 30px;
+    height: 16px;
+    padding: 2.7px;
+    border: 2px solid red;
+    text-align: center;
+    font-size: 12px;
+}
 
 
 
@@ -533,16 +545,30 @@ function clearResults(){
   x.value=''
   y.value=''
   document.getElementById("results").innerHTML = "";
-  console.log("CLEAR");
+
 
 }
+
+function clearModal(){
+  document.getElementById("movieDetails").innerHTML = "";
+  document.getElementById("cast").innerHTML = "";
+  document.getElementById("reviews").innerHTML = "";
+
+}
+
+
+
+
 
 
 
 const tmdb_url = 'https://image.tmdb.org/t/p/original'
 
 
+
 function showMovieDetails(id){
+
+  clearModal();
   // Get the modal
   var modal = document.getElementById("myModal");
 
@@ -553,12 +579,17 @@ function showMovieDetails(id){
   var span = document.getElementsByClassName("close")[0];
   span.onclick = function() {
     modal.style.display = "none";
+    clearModal();
+
+
+
   }
 
   // When the user clicks anywhere outside of the modal, close it
   window.onclick = function(event) {
     if (event.target == modal) {
       modal.style.display = "none";
+      clearModal();
     }
   }
 
@@ -615,8 +646,8 @@ function showMovieDetails(id){
       var overview = data.overview;
 
 
-      document.getElementById("movieDetails").innerHTML = '<br> <br> <img src ="' + backdrop_path + '" width=780px > <br> <h2>' + title + '</h2> ' + date + ' &nbsp;| &nbsp;' +  genre_string  + '<br> <br> <span style="color:red;"> &#9733 ' +  String((Number(vote_average)/2).toFixed(2))  + '/5 &nbsp; </span>' + String(vote_count) + ' votes <br><br><br> ' + overview + '<br> <br> <i>Spoken Languages: ' + language_string + '</i><br><br> <br>';
-      console.log(data);
+      document.getElementById("movieDetails").innerHTML = '<br> <br> <img src ="' + backdrop_path + '" width=780px > <br> <h2>' + title + '<sup> <a href="' + 'https://www.themoviedb.org/movie/' + '/' +  String(id) + '" target="_blank" class="infoCircle"> &nbsp;i&nbsp; </a></sup></h2> ' + date + ' &nbsp;| &nbsp;' +  genre_string  + '<br> <br> <span style="color:red;"> &#9733 ' +  String((Number(vote_average)/2).toFixed(2))  + '/5 &nbsp; </span>' + String(vote_count) + ' votes <br><br><br> ' + overview + '<br> <br> <i>Spoken Languages: ' + language_string + '</i><br><br> <br>';
+   
     }).catch(function (err) {
       // There was an error
       console.warn('Something went wrong.', err);
@@ -637,23 +668,34 @@ function showMovieDetails(id){
       return response.json();
     }).then(function (data) {
       // This is the JSON from our response
-      console.log(data.result);
+   
 
       var results = data.result;
       var cast_text = ''
       for (var i = 0; i < 8; i++){
-        try{
-          var img_url = tmdb_url + results[i]['profile_path'];
-          var actor_text =     '<div class="grid-item"><img width=172px src = "'+ img_url + '">' + '<br> <b>' + results[i]['name'] + '</b><br> AS <br> <div class="truncate" >' + results[i]['character'] + '</div> <br> <br></div> '; 
-          cast_text += actor_text;
+        if ( i < results.length ){
+          console.log(results[i]['profile_path'] );
+            try{
 
+              var img_url = tmdb_url + results[i]['profile_path'];
+              if (results[i]['profile_path'] == "N/A"){
+                img_url = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/person-placeholder.png"
+              }
+              var actor_text =     '<div class="grid-item"><img width=172px src = "'+ img_url + '">' + '<br> <b>' + results[i]['name'] + '</b><br> AS <br> <div class="truncate" >' + results[i]['character'] + '</div> <br> <br></div> '; 
+              cast_text += actor_text;
+
+            }
+            catch(err){
+              cast_text += '<div class="grid-item"><img width=172px src = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/person-placeholder.png"></div>'
+            }
         }
-        catch(err){
-          cast_text += '<div class="grid-item"><img width=172px src = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/person-placeholder.png"></div>'
+        else{
+            cast_text += '<div class="grid-item"><img width=172px src = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/person-placeholder.png"></div>'
         }
+
       }
 
-    console.log(cast_text)
+
 
     document.getElementById("cast").innerHTML = cast_text;
 
@@ -674,7 +716,7 @@ function showMovieDetails(id){
       return response.json();
     }).then(function (data) {
       // This is the JSON from our response
-      console.log(data.result);
+
 
       var results = data.result;
       var reviews_text = ''
@@ -724,8 +766,6 @@ function showMovieDetails(id){
 
 
 
-  console.log("MOVIE");
-  console.log(id);
 
 
 
@@ -759,6 +799,8 @@ function showMovieDetails(id){
 
 
 function showTvDetails(id){
+
+  clearModal();
 
   var modal = document.getElementById("myModal");
 
@@ -831,9 +873,10 @@ function showTvDetails(id){
       var vote_count = data.vote_count;
       var overview = data.overview;
 
+//document.getElementById("movieDetails").innerHTML = '<br> <br> <img src ="' + backdrop_path + '" width=780px > <br> <h2>' + title + '<sup> <a href="' + 'https://www.themoviedb.org/movie/' + '/' +  String(id) + '" target="_blank" class="infoCircle"> &nbsp;i&nbsp; </a></sup></h2> ' + date + ' &nbsp;| &nbsp;' +  genre_string  + '<br> <br> <span style="color:red;"> &#9733 ' +  String((Number(vote_average)/2).toFixed(2))  + '/5 &nbsp; </span>' + String(vote_count) + ' votes <br><br><br> ' + overview + '<br> <br> <i>Spoken Languages: ' + language_string + '</i><br><br> <br>';
 
-      document.getElementById("movieDetails").innerHTML = '<br> <br> <img src ="' + backdrop_path + '" width=780px > <br> <h2>' + title + '</h2> ' + date + ' &nbsp;| &nbsp;' +  genre_string  + '<br> <br> <span style="color:red;"> &#9733 ' +  String((Number(vote_average)/2).toFixed(2))  + '/5 &nbsp; </span>' + String(vote_count) + ' votes <br><br><br> ' + overview + '<br> <br> <i>Spoken Languages: ' + language_string + '</i><br><br> <br>';
-      console.log(data);
+      document.getElementById("movieDetails").innerHTML = '<br> <br> <img src ="' + backdrop_path + '" width=780px > <br> <h2>' + title + '<sup> <a href="' + 'https://www.themoviedb.org/tv/' + '/' +  String(id) + '" target="_blank" class="infoCircle"> &nbsp;i&nbsp; </a></sup></h2> ' + date + ' &nbsp;| &nbsp;' +  genre_string  + '<br> <br> <span style="color:red;"> &#9733 ' +  String((Number(vote_average)/2).toFixed(2))  + '/5 &nbsp; </span>' + String(vote_count) + ' votes <br><br><br> ' + overview + '<br> <br> <i>Spoken Languages: ' + language_string + '</i><br><br> <br>';
+
     }).catch(function (err) {
       // There was an error
       console.warn('Something went wrong.', err);
@@ -854,23 +897,34 @@ function showTvDetails(id){
       return response.json();
     }).then(function (data) {
       // This is the JSON from our response
-      console.log(data.result);
+
 
       var results = data.result;
       var cast_text = ''
       for (var i = 0; i < 8; i++){
-        try{
-          var img_url = tmdb_url + results[i]['profile_path'];
-          var actor_text =     '<div class="grid-item"><img width=172px src = "'+ img_url + '">' + '<br> <b>' + results[i]['name'] + '</b><br> AS <br> <div class="truncate" >' + results[i]['character'] + '</div> <br> <br></div> '; 
-          cast_text += actor_text;
+        if (i < results.length){
+            try{
 
+              var img_url = tmdb_url + results[i]['profile_path'];
+
+              if (results[i]['profile_path'] == "N/A"){
+                img_url = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/person-placeholder.png"
+              }
+              var actor_text =     '<div class="grid-item"><img width=172px src = "'+ img_url + '">' + '<br> <b>' + results[i]['name'] + '</b><br> AS <br> <div class="truncate" >' + results[i]['character'] + '</div> <br> <br></div> '; 
+              cast_text += actor_text;
+
+            }
+            catch(err){
+              cast_text += '<div class="grid-item"><img width=172px src = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/person-placeholder.png"></div>'
+            }
         }
-        catch(err){
-          cast_text += '<div class="grid-item"><img width=172px src = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/person-placeholder.png"></div>'
+        else{
+            cast_text += '<div class="grid-item"><img width=172px src = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/person-placeholder.png"></div>'
         }
       }
 
-    console.log(cast_text)
+
+
 
     document.getElementById("cast").innerHTML = cast_text;
 
@@ -890,8 +944,7 @@ function showTvDetails(id){
       // The API call was successful!
       return response.json();
     }).then(function (data) {
-      // This is the JSON from our response
-      console.log(data.result);
+
 
       var results = data.result;
       var reviews_text = ''
@@ -939,8 +992,7 @@ function showTvDetails(id){
 
 
 
-  console.log("TV");
-  console.log(id);
+
 
 
 
@@ -993,11 +1045,11 @@ function loadboth() {
 
   var y = document.getElementById("Category");
   var category = y.value;
-  console.log(keyword)
+
   
 
   var api_url = "https://cs571vctmdbapi.azurewebsites.net/multisearch?query=" + keyword;
-  console.log(api_url);
+
   fetch(api_url).then(function (response) {
       // The API call was successful!
       return response.json();
@@ -1005,7 +1057,7 @@ function loadboth() {
       // This is the JSON from our response
 
       var results = data.result;
-      console.log(results);
+
       var text = "Showing Results... <br>"
       const tmdb_url = 'https://image.tmdb.org/t/p/original'
 
@@ -1017,8 +1069,7 @@ function loadboth() {
 
 
           if (results[i]['media_type'] == 'movie'){
-                              console.log("AAAAAAA")
-                              console.log(results[i]);
+                         
                             var poster_url = 'https://cinemaone.net/images/movie_placeholder.png';
                             if (results[i]['poster_path'] == null){
                               poster_url = 'https://cinemaone.net/images/movie_placeholder.png';
@@ -1076,7 +1127,6 @@ function loadboth() {
 
           if (results[i]['media_type'] == 'tv'){
 
-                      console.log(results[i]);
                                 var poster_url = 'https://cinemaone.net/images/movie_placeholder.png';
                                 if (results[i]['poster_path'] == null){
                                   poster_url = 'https://cinemaone.net/images/movie_placeholder.png';
@@ -1164,11 +1214,11 @@ function loadMovies() {
 
   var y = document.getElementById("Category");
   var category = y.value;
-  console.log(keyword)
+
   
 
   var api_url = "https://cs571vctmdbapi.azurewebsites.net/searchmovies?query=" + keyword;
-  console.log(api_url);
+
   fetch(api_url).then(function (response) {
       // The API call was successful!
       return response.json();
@@ -1176,12 +1226,12 @@ function loadMovies() {
       // This is the JSON from our response
 
       var results = data.result;
-      console.log(results);
+
       var text = "Showing Results... <br>"
       const tmdb_url = 'https://image.tmdb.org/t/p/original'
 
       for (var i = 0; i < results.length; i++) {
-          console.log(results[i]);
+   
           var poster_url = 'https://cinemaone.net/images/movie_placeholder.png';
           if (results[i]['poster_path'] == null){
             poster_url = 'https://cinemaone.net/images/movie_placeholder.png';
@@ -1255,11 +1305,10 @@ function loadTv() {
 
   var y = document.getElementById("Category");
   var category = y.value;
-  console.log(keyword)
   
 
   var api_url = "https://cs571vctmdbapi.azurewebsites.net/searchtv?query=" + keyword;
-  console.log(api_url);
+
   fetch(api_url).then(function (response) {
       // The API call was successful!
       return response.json();
@@ -1267,12 +1316,12 @@ function loadTv() {
       // This is the JSON from our response
 
       var results = data.result;
-      console.log(results);
+
       var text = "Showing Results... <br>"
       const tmdb_url = 'https://image.tmdb.org/t/p/original'
 
       for (var i = 0; i < results.length; i++) {
-          console.log(results[i]);
+
           var poster_url = 'https://cinemaone.net/images/movie_placeholder.png';
           if (results[i]['poster_path'] == null){
             poster_url = 'https://cinemaone.net/images/movie_placeholder.png';
@@ -1357,7 +1406,7 @@ function loadTrending() {
       // This is the JSON from our response
 
       var trending = data.result;
-      console.log(trending);
+
       const tmdb_url = 'https://image.tmdb.org/t/p/original'
 
       var img1 = tmdb_url + data.result[0]['backdrop_path']
@@ -1391,7 +1440,7 @@ function loadTrending() {
 
 
       if (myIndex == 0){carousel();}
-      console.log(img1);
+
     }).catch(function (err) {
       // There was an error
       console.warn('Something went wrong.', err);
@@ -1408,7 +1457,7 @@ function loadAiring() {
       // This is the JSON from our response
 
       var airing = data.result;
-      console.log(airing);
+
       const tmdb_url = 'https://image.tmdb.org/t/p/original'
 
       var img1 = tmdb_url + data.result[0]['backdrop_path']
@@ -1442,8 +1491,7 @@ function loadAiring() {
       document.getElementById("Airing").innerHTML = text;
 
       if (myIndex1 == 0){carousel1();}
-      
-      console.log(img1);
+
     }).catch(function (err) {
       // There was an error
       console.warn('Something went wrong.', err);
