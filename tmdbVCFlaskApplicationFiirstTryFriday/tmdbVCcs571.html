@@ -14,7 +14,7 @@ a {
   color: red;
   text-decoration: none;
 }
-.animation{animation:fading 5s infinite}@keyframes fading{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
+.animation{animation:fading 6s infinite}@keyframes fading{0%{opacity:0}50%{opacity:1}100%{opacity:0}}
 
 .slideshowtitle{
   padding-left: 340px;
@@ -521,7 +521,7 @@ function carousel() {
   myIndex++;
   if (myIndex > x.length) {myIndex = 1}    
   x[myIndex-1].style.display = "block";  
-  setTimeout(carousel, 5000); // Change image every 2 seconds
+  setTimeout(carousel, 6000); // Change image every 2 seconds
 }
 
 function carousel1() {
@@ -533,7 +533,7 @@ function carousel1() {
   myIndex1++;
   if (myIndex1 > x.length) {myIndex1 = 1}    
   x[myIndex1-1].style.display = "block";  
-  setTimeout(carousel1, 5000); // Change image every 2 seconds
+  setTimeout(carousel1, 6000); // Change image every 2 seconds
 }
 
 function clearResults(){
@@ -1481,7 +1481,7 @@ function loadAiring() {
 
 
 
-      var text = '<div class = "slide1"> <img width=780 src="'  + img1 + '"> <div class="overlay">'  + title1 + '</div> </div>' 
+      var text = '<div class = "slide1 animation"> <img width=780 src="'  + img1 + '"> <div class="overlay">'  + title1 + '</div> </div>' 
       + '<div class = "slide1 animation"> <img  width=780 src="'  + img2 + '"> <div class="overlay">'  + title2 + '</div> </div>' 
       + '<div class = "slide1 animation"> <img width=780 src="'  + img3 + '">  <div class="overlay">'  + title3 + '</div> </div>' 
       + '<div class = "slide1 animation"> <img  width=780 src="'  + img4 + '"> <div class="overlay">'  + title4 + '</div> </div>' 
