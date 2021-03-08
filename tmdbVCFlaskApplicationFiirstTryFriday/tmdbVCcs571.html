@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {box-sizing: border-box}
+body {font-family: "Lato", sans-serif;
+background-color: black;
+position:relative;
+
+min-width: 1000px;
+}
+a {
+  color: red;
+  text-decoration: none;
+}
+
+.slideshowtitle{
+  padding-left: 340px;
+  padding-right:300px;
+}
+.header {
+  padding: 0px;
+  text-align: left;
+  background-color: black;
+  background-image: linear-gradient(to right, black ,black, black, black, red);
+  color: red;
+  font-size: 25px;
+
+}
+
+.credits {
+  padding: 15px;
+  text-align: right;
+  padding-right:2%;
+  background-color: brown;
+  color: white;
+  font-size: 15px;
+  min-width: 650px;
+  max-width: 1500px;
+  width:130%;
+
+}
+
+
+.rectangle {
+  height: 315px;
+  width: 13px;
+ position:relative; left:-7px;
+  background-color: brown;
+}
+
+.divline {
+  height: 1.2px;
+  width: 300px;
+  background-color: gray;
+  left:200px;
+  position:relative;
+
+}
+
+.newline { 
+  clear: both; 
+  float: left; 
+  display: block; 
+  position: relative; 
+
+} 
+
+.overlay {
+  width: 100%;
+  min-width:780px;
+  padding: 25px;
+  padding-left:5%;
+  top: -70px;
+  left: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.5);
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+  font-size: 14px;
+  line-height: 18px;
+  position:relative;
+}
+
+.button{
+  background-color: black; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.button:hover {
+  background-color: red;
+  color: white;
+}
+
+.showmore_button{
+  background-color: red; /* Green */
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 4px;
+  outline: none;
+}
+
+.showmore_button:hover {
+  background-color: brown;
+  color: white;
+}
+
+.slide{
+  padding-left: 5%;
+
+}
+
+.slide1{
+  padding-left: 5%;
+}
+
+.search{
+  background-image: linear-gradient(to bottom,red, brown ,black,black,black,black, black, black, black);
+  min-height: 1000px;
+  padding-left: 10px;
+  min-width:840px;
+  text-align: center;
+}
+/* Style the tab */
+.tab {
+  float: left;
+  
+  background-color: black;
+  padding-left:10%;
+  color: white;
+  width: 30%;
+  max-width: 350px;
+  min-width: 300px;
+  
+}
+
+.Home {
+  text-align: center;
+  min-height: 1200px;
+
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  display: block;
+  background-color: inherit;
+  color: white;
+  padding: 22px 16px;
+  width: 100%;
+  border: none;
+  outline: none;
+  text-align: right;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 17px;
+
+
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  
+  border: none;
+}
+
+/* Create an active/current "tab button" class */
+.tab button.active {
+  color: red;
+  border-bottom: 1px solid #ccc;
+
+  
+}
+
+/* Style the tab content */
+.tabcontent {
+  float: left;
+  padding: 0px 12px;
+  color: white;
+  width: 70%;
+  border-left: 1px solid #ccc;
+  height: 100%;
+  padding-right: 10%;
+  padding-left: 1%;
+  min-height: 100vh;
+
+  max-width: 2650px;
+  white-space: nowrap;
+  
+  
+}
+
+
+.infoCircle {
+    border-radius: 50%;
+    width: 30px;
+    height: 16px;
+    padding: 2.7px;
+    border: 2px solid red;
+    text-align: center;
+    font-size: 12px;
+}
+
+
+
+.modal {
+  display: none; 
+  position: fixed; 
+  z-index: 1; 
+  padding-top: 30px;
+  padding-left:14%; 
+  left: -200px;
+  top: 0;
+  width: 80%; 
+  height: 100%; 
+  min-width: 1800px;
+  overflow: auto; 
+
+  background-size: 2000px;
+  background-color: rgba(0,0,0,0.4);
+
+}
+
+
+.modal-content {
+  background-color: lightgray;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 45%;
+  left:-50px;
+  min-width: 810px;
+}
+
+
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  
+  padding: 5px;
+  float:bottom;
+}
+.grid-item {
+  background-color: blue);
+
+  
+  padding:2px;
+  font-size: 14px;
+  text-align: center;
+  max-width: 190px;
+}
+
+
+.truncate {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.line_limit {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+
+
+
+
+
+
+
+</style>
+</head>
+<body>
+
+<div class="header">
+  THE MOVIE DB
+
+</div>
+
+
+
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+
+
+    <div id="movieDetails">
+
+   
+
+    </div>
+
+
+    <h2> Cast </h2>
+    <div id = 'cast' class="grid-container">
+
+    <div class="grid-item"><img width=172px src = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/person-placeholder.png"></div>
+    <div class="grid-item"><img width=172px src = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/person-placeholder.png"></div>
+    <div class="grid-item"><img width=172px src = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/person-placeholder.png"></div>
+    <div class="grid-item"><img width=172px src = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/person-placeholder.png"></div>
+    <div class="grid-item"><img width=172px src = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/person-placeholder.png"></div>
+    <div class="grid-item"><img width=172px src = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/person-placeholder.png"></div>
+    <div class="grid-item"><img width=172px src = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/person-placeholder.png"></div>
+    <div class="grid-item"><img width=172px src = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/person-placeholder.png"></div>
+
+
+
+    </div>
+
+    <h2> Reviews </h2>
+    <div id = 'reviews'>
+
+    </div>
+
+
+  </div>
+  
+
+</div>
+
+
+
+
+
+
+<br>
+
+<div class="tab">
+  <button class="tablinks" onclick="openTab(event, 'Home')" id="defaultOpen">Home&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &rarr;</button>
+  <button class="tablinks" onclick="openTab(event, 'Search')">Search&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &rarr;</button>
+
+</div>
+
+
+<div id="Home" class="tabcontent">
+<div class="Home">
+
+  <h3 class="slideshowtitle">Trending Movies</h3>
+  <div id="Trending"> </div>
+  <br><br><br>
+  <h3 class="slideshowtitle">TV Shows On-Air Today </h3>
+  <div id="Airing"> </div>
+
+
+
+  <div class="credits">
+    Designed and Developed by Vincent Chi <br>
+    Powered by TMDB
+  </div>
+  <br>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="Search" class="tabcontent">
+
+
+
+
+<div class="search">
+  <br><br>
+  <h3>Search</h3>
+  
+
+    <div style="text-align:left; padding-left:20%;" class="container">
+        <label for="Keyword">Keyword <sup style="color:red;">*</sup>  &nbsp;</label> <input style="width:50%" type="text" id="Keyword" name="Keyword" placeholder=""> 
+        <br>
+        <br>
+        <label  style="" for="country">Category <sup style="color:red;">*</sup> &nbsp;</label><select style="width:25%; " id="Category" name="Category">
+        <option value=""></option>
+        <option value="movies">Movies</option>
+        <option value="tv">TV Shows</option>
+        <option value="both">Movies and TV Shows</option>
+        </select>
+        <br>
+        
+        <br> 
+
+        <span style="padding-left:23%"> </span> <button  class="button" id="myBtn" onclick="load()">Search</button>   &nbsp; &nbsp;  &nbsp; &nbsp; 
+        <button class="button" id="clear_button" onclick="clearResults()">Clear</button>
+
+        <br><br>
+
+
+
+
+
+
+    </div>
+  <br>
+
+  <div style="text-align:left;" id = "results">
+       
+
+
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+var myIndex = 0;
+var myIndex1 = 0;
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("slide");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 3000); // Change image every 2 seconds
+}
+
+function carousel1() {
+  var i;
+  var x = document.getElementsByClassName("slide1");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex1++;
+  if (myIndex1 > x.length) {myIndex1 = 1}    
+  x[myIndex1-1].style.display = "block";  
+  setTimeout(carousel1, 3000); // Change image every 2 seconds
+}
+
+function clearResults(){
+  var x = document.getElementById("Keyword");
+  var keyword = x.value;
+
+  var y = document.getElementById("Category");
+  var category = y.value;
+
+  x.value=''
+  y.value=''
+  document.getElementById("results").innerHTML = "";
+
+
+}
+
+function clearModal(){
+  document.getElementById("movieDetails").innerHTML = "";
+  document.getElementById("cast").innerHTML = "";
+  document.getElementById("reviews").innerHTML = "";
+
+}
+
+
+
+
+
+
+
+const tmdb_url = 'https://image.tmdb.org/t/p/original'
+
+
+
+function showMovieDetails(id){
+
+  clearModal();
+  // Get the modal
+  var modal = document.getElementById("myModal");
+
+  // Get the button that opens the modal
+  modal.style.display = "block";
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  span.onclick = function() {
+    modal.style.display = "none";
+    clearModal();
+
+
+
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+      clearModal();
+    }
+  }
+
+   //Movie Details
+  var api_url = "https://cs571vctmdbapi.azurewebsites.net/moviedetails?id=" + String(id)
+
+  fetch(api_url).then(function (response) {
+      // The API call was successful!
+      return response.json();
+    }).then(function (data) {
+      // This is the JSON from our response
+
+      var backdrop_path = data.backdrop_path;
+      if (backdrop_path != null){
+        backdrop_path = tmdb_url + backdrop_path;
+      }
+      else{
+        backdrop_path = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/movie-placeholder.jpg";
+      }
+
+
+      var title = data.title;
+      var date = data.release_date.substr(0,4);
+
+      var genres = data.genres;
+      var genre_string = '';
+      if (genres.length != 0){
+        for (var i = 0; i < genres.length; i++){
+          genre_string += genres[i]['name'];
+
+          if (i != genres.length - 1){
+          genre_string += ", ";
+        }
+        }
+        
+      }
+
+      var languages = data.spoken_languages;
+      var language_string = '';
+      if (languages.length != 0){
+        for (var i = 0; i < languages.length; i++){
+          language_string += languages[i]['english_name'];
+
+          if (i != languages.length - 1){
+          language_string += ", ";
+        }
+      }
+        
+      }
+
+
+      var vote_average = data.vote_average;
+      var vote_count = data.vote_count;
+      var overview = data.overview;
+
+
+      document.getElementById("movieDetails").innerHTML = '<br> <br> <img src ="' + backdrop_path + '" width=780px > <br> <h2>' + title + '<sup> <a href="' + 'https://www.themoviedb.org/movie/' + '/' +  String(id) + '" target="_blank" class="infoCircle"> &nbsp;i&nbsp; </a></sup></h2> ' + date + ' &nbsp;| &nbsp;' +  genre_string  + '<br> <br> <span style="color:red;"> &#9733 ' +  String((Number(vote_average)/2).toFixed(2))  + '/5 &nbsp; </span>' + String(vote_count) + ' votes <br><br><br> ' + overview + '<br> <br> <i>Spoken Languages: ' + language_string + '</i><br><br> <br>';
+   
+    }).catch(function (err) {
+      // There was an error
+      console.warn('Something went wrong.', err);
+    });
+
+
+
+
+
+
+
+
+ //Movie Cast
+  var api_url = "https://cs571vctmdbapi.azurewebsites.net/moviecredits?id=" + String(id)
+
+  fetch(api_url).then(function (response) {
+      // The API call was successful!
+      return response.json();
+    }).then(function (data) {
+      // This is the JSON from our response
+   
+
+      var results = data.result;
+      var cast_text = ''
+      for (var i = 0; i < 8; i++){
+        if ( i < results.length ){
+          console.log(results[i]['profile_path'] );
+            try{
+
+              var img_url = tmdb_url + results[i]['profile_path'];
+              if (results[i]['profile_path'] == "N/A"){
+                img_url = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/person-placeholder.png"
+              }
+              var actor_text =     '<div class="grid-item"><img width=172px src = "'+ img_url + '">' + '<br> <b>' + results[i]['name'] + '</b><br> AS <br> <div class="truncate" >' + results[i]['character'] + '</div> <br> <br></div> '; 
+              cast_text += actor_text;
+
+            }
+            catch(err){
+              cast_text += '<div class="grid-item"><img width=172px src = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/person-placeholder.png"></div>'
+            }
+        }
+        else{
+            cast_text += '<div class="grid-item"><img width=172px src = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/person-placeholder.png"></div>'
+        }
+
+      }
+
+
+
+    document.getElementById("cast").innerHTML = cast_text;
+
+     
+    }).catch(function (err) {
+      // There was an error
+      console.warn('Something went wrong.', err);
+    });
+
+
+
+
+ //Movie Reviews
+   var api_url = "https://cs571vctmdbapi.azurewebsites.net/moviereviews?id=" + String(id)
+
+  fetch(api_url).then(function (response) {
+      // The API call was successful!
+      return response.json();
+    }).then(function (data) {
+      // This is the JSON from our response
+
+
+      var results = data.result;
+      var reviews_text = ''
+      for (var i = 0; i < 5; i++){
+        try{
+            
+          var date = String(results[i]['created_at']);
+          var rating = results[i]['rating'];
+          var username = results[i]['username'];
+          var content = results[i]['content'];
+
+          var year = date.substr(0,4);
+          var month = date.substr(5,2);
+          var day = date.substr(8,2);
+          date = month + '/' + day + '/' + year;
+
+          if (rating != null){
+            rating = '<span style="color:red;"> &#9733; ' + String((Number(rating)/2).toFixed(2)) + '/5 </span><br>'
+          }
+          else{
+            rating = '';
+          }
+
+
+          reviews_text +=  '<b>' + username + '</b>' + ' on ' + date + '<br>' + rating + '<br> <div class="line_limit">' + content + '</div><br>  <div class="divline"></div> <br> <br>';
+
+
+
+        }
+        catch(err){
+         reviews_text += '';
+        }
+      }
+
+
+
+
+    document.getElementById("reviews").innerHTML = reviews_text;
+
+     
+    }).catch(function (err) {
+      // There was an error
+      console.warn('Something went wrong.', err);
+    });
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function showTvDetails(id){
+
+  clearModal();
+
+  var modal = document.getElementById("myModal");
+
+  // Get the button that opens the modal
+  modal.style.display = "block";
+
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+
+     //Movie Details
+  var api_url = "https://cs571vctmdbapi.azurewebsites.net/tvdetails?id=" + String(id)
+
+  fetch(api_url).then(function (response) {
+      // The API call was successful!
+      return response.json();
+    }).then(function (data) {
+      // This is the JSON from our response
+
+      var backdrop_path = data.backdrop_path;
+      if (backdrop_path != null){
+        backdrop_path = tmdb_url + backdrop_path;
+      }
+      else{
+        backdrop_path = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/movie-placeholder.jpg";
+      }
+
+
+      var title = data.name;
+      var date = data.first_air_date.substr(0,4);
+
+      var genres = data.genres;
+      var genre_string = '';
+      if (genres.length != 0){
+        for (var i = 0; i < genres.length; i++){
+          genre_string += genres[i]['name'];
+
+          if (i != genres.length - 1){
+          genre_string += ", ";
+        }
+        }
+        
+      }
+
+      var languages = data.spoken_languages;
+      var language_string = '';
+      if (languages.length != 0){
+        for (var i = 0; i < languages.length; i++){
+          language_string += languages[i]['english_name'];
+
+          if (i != languages.length - 1){
+          language_string += ", ";
+        }
+      }
+        
+      }
+
+
+      var vote_average = data.vote_average;
+      var vote_count = data.vote_count;
+      var overview = data.overview;
+
+//document.getElementById("movieDetails").innerHTML = '<br> <br> <img src ="' + backdrop_path + '" width=780px > <br> <h2>' + title + '<sup> <a href="' + 'https://www.themoviedb.org/movie/' + '/' +  String(id) + '" target="_blank" class="infoCircle"> &nbsp;i&nbsp; </a></sup></h2> ' + date + ' &nbsp;| &nbsp;' +  genre_string  + '<br> <br> <span style="color:red;"> &#9733 ' +  String((Number(vote_average)/2).toFixed(2))  + '/5 &nbsp; </span>' + String(vote_count) + ' votes <br><br><br> ' + overview + '<br> <br> <i>Spoken Languages: ' + language_string + '</i><br><br> <br>';
+
+      document.getElementById("movieDetails").innerHTML = '<br> <br> <img src ="' + backdrop_path + '" width=780px > <br> <h2>' + title + '<sup> <a href="' + 'https://www.themoviedb.org/tv/' + '/' +  String(id) + '" target="_blank" class="infoCircle"> &nbsp;i&nbsp; </a></sup></h2> ' + date + ' &nbsp;| &nbsp;' +  genre_string  + '<br> <br> <span style="color:red;"> &#9733 ' +  String((Number(vote_average)/2).toFixed(2))  + '/5 &nbsp; </span>' + String(vote_count) + ' votes <br><br><br> ' + overview + '<br> <br> <i>Spoken Languages: ' + language_string + '</i><br><br> <br>';
+
+    }).catch(function (err) {
+      // There was an error
+      console.warn('Something went wrong.', err);
+    });
+
+
+
+
+
+
+
+
+ //Movie Cast
+  var api_url = "https://cs571vctmdbapi.azurewebsites.net/tvcredits?id=" + String(id)
+
+  fetch(api_url).then(function (response) {
+      // The API call was successful!
+      return response.json();
+    }).then(function (data) {
+      // This is the JSON from our response
+
+
+      var results = data.result;
+      var cast_text = ''
+      for (var i = 0; i < 8; i++){
+        if (i < results.length){
+            try{
+
+              var img_url = tmdb_url + results[i]['profile_path'];
+
+              if (results[i]['profile_path'] == "N/A"){
+                img_url = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/person-placeholder.png"
+              }
+              var actor_text =     '<div class="grid-item"><img width=172px src = "'+ img_url + '">' + '<br> <b>' + results[i]['name'] + '</b><br> AS <br> <div class="truncate" >' + results[i]['character'] + '</div> <br> <br></div> '; 
+              cast_text += actor_text;
+
+            }
+            catch(err){
+              cast_text += '<div class="grid-item"><img width=172px src = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/person-placeholder.png"></div>'
+            }
+        }
+        else{
+            cast_text += '<div class="grid-item"><img width=172px src = "https://bytes.usc.edu/cs571/s21_JSwasm00/hw/HW6/imgs/person-placeholder.png"></div>'
+        }
+      }
+
+
+
+
+    document.getElementById("cast").innerHTML = cast_text;
+
+     
+    }).catch(function (err) {
+      // There was an error
+      console.warn('Something went wrong.', err);
+    });
+
+
+
+
+ //Movie Reviews
+   var api_url = "https://cs571vctmdbapi.azurewebsites.net/tvreviews?id=" + String(id)
+
+  fetch(api_url).then(function (response) {
+      // The API call was successful!
+      return response.json();
+    }).then(function (data) {
+
+
+      var results = data.result;
+      var reviews_text = ''
+      for (var i = 0; i < 5; i++){
+        try{
+            
+          var date = String(results[i]['created_at']);
+          var rating = results[i]['rating'];
+          var username = results[i]['username'];
+          var content = results[i]['content'];
+
+          var year = date.substr(0,4);
+          var month = date.substr(5,2);
+          var day = date.substr(8,2);
+          date = month + '/' + day + '/' + year;
+
+          if (rating != null){
+            rating = '<span style="color:red;"> &#9733; ' + String((Number(rating)/2).toFixed(2)) + '/5 </span><br>'
+          }
+          else{
+            rating = '';
+          }
+
+
+          reviews_text +=  '<b>' + username + '</b>' + ' on ' + date + '<br>' + rating + '<br> <div class="line_limit">' + content + '</div><br>  <div class="divline"></div> <br> <br>';
+
+
+
+        }
+        catch(err){
+         reviews_text += '';
+        }
+      }
+
+
+
+
+    document.getElementById("reviews").innerHTML = reviews_text;
+
+     
+    }).catch(function (err) {
+      // There was an error
+      console.warn('Something went wrong.', err);
+    });
+
+
+
+
+
+
+
+}
+
+
+function load(){
+
+  var y = document.getElementById("Category");
+  var category = y.value;
+
+  var x = document.getElementById("Keyword");
+  var keyword = x.value;
+
+  if (keyword !='' ){
+    
+    if (category == 'movies'){
+      loadMovies();
+    }
+    if (category == 'tv'){
+      loadTv();
+    }
+    if (category == 'both'){
+      loadboth();
+    }
+    
+  }
+
+
+  if ( keyword.trim() == '' || category ==''){
+ 
+      alert("Please enter valid values");
+    
+  }
+  
+  
+
+}
+
+
+
+
+
+
+
+function loadboth() {
+
+  var x = document.getElementById("Keyword");
+  var keyword = x.value;
+
+  var y = document.getElementById("Category");
+  var category = y.value;
+
+  
+
+  var api_url = "https://cs571vctmdbapi.azurewebsites.net/multisearch?query=" + keyword;
+
+  fetch(api_url).then(function (response) {
+      // The API call was successful!
+      return response.json();
+    }).then(function (data) {
+      // This is the JSON from our response
+
+      var results = data.result;
+
+      var text = "Showing Results... <br>"
+      const tmdb_url = 'https://image.tmdb.org/t/p/original'
+
+      for (var i = 0; i < results.length; i++) {
+
+
+
+
+
+
+          if (results[i]['media_type'] == 'movie'){
+                         
+                            var poster_url = 'https://cinemaone.net/images/movie_placeholder.png';
+                            if (results[i]['poster_path'] == null){
+                              poster_url = 'https://cinemaone.net/images/movie_placeholder.png';
+                            }
+                            else{
+                              poster_url = tmdb_url + results[i]['poster_path'];
+                            }
+
+                            var title = results[i]['title'];
+                            var overview = results[i]['overview'];
+                            try{
+                                var release_date = results[i]['release_date'].substr(0,4);
+                                }
+                                catch(err){
+                                  var release_date = ' N/A ';
+                                }
+
+                            var vote_average = results[i]['vote_average'];
+                            var vote_count = results[i]['vote_count'];
+                            var genres = results[i]['genre_ids']
+                            const genre_dict = {28: 'Action', 12: 'Adventure', 16: 'Animation', 35: 'Comedy', 80: 'Crime', 99: 'Documentary', 18: 'Drama', 10751: 'Family', 14: 'Fantasy', 36: 'History', 27: 'Horror', 10402: 'Music', 9648: 'Mystery', 10749: 'Romance', 878: 'Science Fiction', 10770: 'TV Movie', 53: 'Thriller', 10752: 'War', 37: 'Western'}
+                            var genre_string = ''
+                            if (genres.length != 0){
+                              for (var k = 0; k < genres.length; k++) {
+                                genre_string += genre_dict[genres[k]];
+                                if (k != genres.length - 1){
+                                  genre_string += ', '
+                                }
+                                
+                              }
+                            }
+                            else{
+                              genre_string = ''
+                            }
+
+
+                            //var new_item = '<div class="newline"><br><br><span style="float:left;"> <div style="float:left;" class="rectangle"></div> <br>  &nbsp;&nbsp;<img src="' + poster_url + '" width=185> </span></div>'
+
+                            if (overview.length < 100){
+                              overview += '<span style="visibility:hidden">ng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng </span>'
+                            }
+
+                            var new_item = '<div class="newline"><br><br><span style="float:left;"> <div style="float:left;" class="rectangle"></div> <br>  &nbsp;&nbsp;<img src="' + poster_url + '" width=185> </span><div style="float:left;padding-left:30px; width:75%;  "><br><h2>'  + title + ' </h2> <p style="font-size:15px">'+ String(release_date) + ' | ' + genre_string + ' <br> <span style="color:red;"> &#9733; ' + String((Number(vote_average)/2).toFixed(2)) + '/5 </span> &nbsp;'+ String(vote_count) + '  votes<br></p> <p style="width:100%; font-size:14px; white-space:normal;">'+ overview + '  </p><button class="showmore_button" id="myBtn" onclick="showMovieDetails('+ results[i]['id'] + ')">Show More</button></div></div>'
+
+                            text += new_item;
+
+          }
+
+
+
+
+
+
+
+
+          if (results[i]['media_type'] == 'tv'){
+
+                                var poster_url = 'https://cinemaone.net/images/movie_placeholder.png';
+                                if (results[i]['poster_path'] == null){
+                                  poster_url = 'https://cinemaone.net/images/movie_placeholder.png';
+                                }
+                                else{
+                                  poster_url = tmdb_url + results[i]['poster_path'];
+                                }
+
+                                var title = results[i]['title'];
+                                var overview = results[i]['overview'];
+
+                                try{
+                                var release_date = results[i]['release_date'].substr(0,4);
+                                }
+                                catch(err){
+                                  var release_date = ' N/A ';
+                                }
+                                var vote_average = results[i]['vote_average'];
+                                var vote_count = results[i]['vote_count'];
+
+                                 var genres = results[i]['genre_ids']
+                                const genre_dict = {10759: 'Action & Adventure', 16: 'Animation', 35: 'Comedy', 80: 'Crime', 99: 'Documentary', 18: 'Drama', 10751: 'Family', 10762: 'Kids', 9648: 'Mystery', 10763: 'News', 10764: 'Reality', 10765: 'Sci-Fi & Fantasy', 10766: 'Soap', 10767: 'Talk', 10768: 'War & Politics', 37: 'Western'}
+                                var genre_string = ''
+                                if (genres.length != 0){
+                                  for (var k = 0; k < genres.length; k++) {
+                                    genre_string += genre_dict[genres[k]];
+                                    if (k != genres.length - 1){
+                                      genre_string += ', '
+                                    }
+                                    
+                                  }
+                                }
+                                else{
+                                  genre_string = ''
+                                }
+
+                                //var new_item = '<div class="newline"><br><br><span style="float:left;"> <div style="float:left;" class="rectangle"></div> <br>  &nbsp;&nbsp;<img src="' + poster_url + '" width=185> </span></div>'
+
+                                if (overview.length < 100){
+                                  overview += '<span style="visibility:hidden">ng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng </span>'
+                                }
+
+                                var new_item = '<div class="newline"><br><br><span style="float:left;"> <div style="float:left;" class="rectangle"></div> <br>  &nbsp;&nbsp;<img src="' + poster_url + '" width=185> </span><div style="float:left;padding-left:30px; width:75%;  "><br><h2>'  + title + ' </h2> <p style="font-size:15px">'+ String(release_date) + ' | '+ genre_string + ' <br> <span style="color:red;"> &#9733; ' + String((Number(vote_average)/2).toFixed(2)) + '/5 </span> &nbsp;'+ String(vote_count) + ' votes<br></p> <p style="width:100%; font-size:14px; white-space:normal;">'+ overview + '  </p><button class="showmore_button" id="myBtn" onclick="showTvDetails('+ results[i]['id'] + ')">Show More</button></div></div>'
+
+                                text += new_item;
+
+          }
+
+
+
+
+
+
+
+
+
+          //////////////////
+
+          //Do something
+      }
+
+      if (text == "Showing Results... <br>"){
+        document.getElementById("results").innerHTML = " <br> <br> <span class='newline' style='text-align:center;padding-left:43.5%;white-space:normal;position:relative;'> No Results Found </span> ";
+      }
+      else{
+        document.getElementById("results").innerHTML = text;
+      }
+
+      
+  
+    }).catch(function (err) {
+      // There was an error
+      console.warn('Something went wrong.', err);
+    });
+}
+
+
+
+
+
+function loadMovies() {
+
+  var x = document.getElementById("Keyword");
+  var keyword = x.value;
+
+  var y = document.getElementById("Category");
+  var category = y.value;
+
+  
+
+  var api_url = "https://cs571vctmdbapi.azurewebsites.net/searchmovies?query=" + keyword;
+
+  fetch(api_url).then(function (response) {
+      // The API call was successful!
+      return response.json();
+    }).then(function (data) {
+      // This is the JSON from our response
+
+      var results = data.result;
+
+      var text = "Showing Results... <br>"
+      const tmdb_url = 'https://image.tmdb.org/t/p/original'
+
+      for (var i = 0; i < results.length; i++) {
+   
+          var poster_url = 'https://cinemaone.net/images/movie_placeholder.png';
+          if (results[i]['poster_path'] == null){
+            poster_url = 'https://cinemaone.net/images/movie_placeholder.png';
+          }
+          else{
+            poster_url = tmdb_url + results[i]['poster_path'];
+          }
+
+          var title = results[i]['title'];
+          var overview = results[i]['overview'];
+          try{
+                                var release_date = results[i]['release_date'].substr(0,4);
+                                }
+                                catch(err){
+                                  var release_date = ' N/A ';
+                                }
+          var vote_average = results[i]['vote_average'];
+          var vote_count = results[i]['vote_count'];
+          var genres = results[i]['genre_ids']
+          const genre_dict = {28: 'Action', 12: 'Adventure', 16: 'Animation', 35: 'Comedy', 80: 'Crime', 99: 'Documentary', 18: 'Drama', 10751: 'Family', 14: 'Fantasy', 36: 'History', 27: 'Horror', 10402: 'Music', 9648: 'Mystery', 10749: 'Romance', 878: 'Science Fiction', 10770: 'TV Movie', 53: 'Thriller', 10752: 'War', 37: 'Western'}
+          var genre_string = ''
+          if (genres.length != 0){
+            for (var k = 0; k < genres.length; k++) {
+              genre_string += genre_dict[genres[k]];
+              if (k != genres.length - 1){
+                genre_string += ', '
+              }
+              
+            }
+          }
+          else{
+            genre_string = ''
+          }
+
+
+          //var new_item = '<div class="newline"><br><br><span style="float:left;"> <div style="float:left;" class="rectangle"></div> <br>  &nbsp;&nbsp;<img src="' + poster_url + '" width=185> </span></div>'
+
+          if (overview.length < 100){
+            overview += '<span style="visibility:hidden">ng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng </span>'
+          }
+
+          var new_item = '<div class="newline"><br><br><span style="float:left;"> <div style="float:left;" class="rectangle"></div> <br>  &nbsp;&nbsp;<img src="' + poster_url + '" width=185> </span><div style="float:left;padding-left:30px; width:75%;  "><br><h2>'  + title + ' </h2> <p style="font-size:15px">'+ String(release_date) + ' | ' + genre_string + ' <br> <span style="color:red;"> &#9733; ' + String((Number(vote_average)/2).toFixed(2)) + '/5 </span> &nbsp;'+ String(vote_count) + '  votes<br></p> <p style="width:100%; font-size:14px; white-space:normal;">'+ overview + '  </p><button class="showmore_button" id="myBtn" onclick="showMovieDetails('+ results[i]['id'] + ')">Show More</button></div></div>'
+
+          text += new_item;
+
+          //Do something
+      }
+
+      if (text == "Showing Results... <br>"){
+        document.getElementById("results").innerHTML = " <br> <br> <span class='newline' style='text-align:center;padding-left:43.5%;white-space:normal;position:relative;'> No Results Found </span> ";
+      }
+      else{
+        document.getElementById("results").innerHTML = text;
+      }
+
+      
+  
+    }).catch(function (err) {
+      // There was an error
+      console.warn('Something went wrong.', err);
+    });
+}
+
+
+
+
+function loadTv() {
+
+  var x = document.getElementById("Keyword");
+  var keyword = x.value;
+
+  var y = document.getElementById("Category");
+  var category = y.value;
+  
+
+  var api_url = "https://cs571vctmdbapi.azurewebsites.net/searchtv?query=" + keyword;
+
+  fetch(api_url).then(function (response) {
+      // The API call was successful!
+      return response.json();
+    }).then(function (data) {
+      // This is the JSON from our response
+
+      var results = data.result;
+
+      var text = "Showing Results... <br>"
+      const tmdb_url = 'https://image.tmdb.org/t/p/original'
+
+      for (var i = 0; i < results.length; i++) {
+
+          var poster_url = 'https://cinemaone.net/images/movie_placeholder.png';
+          if (results[i]['poster_path'] == null){
+            poster_url = 'https://cinemaone.net/images/movie_placeholder.png';
+          }
+          else{
+            poster_url = tmdb_url + results[i]['poster_path'];
+          }
+
+          var title = results[i]['name'];
+          var overview = results[i]['overview'];
+          try{
+                                var release_date = results[i]['first_air_date'].substr(0,4);
+                                }
+                                catch(err){
+                                  var release_date = ' N/A ';
+                                }
+          var vote_average = results[i]['vote_average'];
+          var vote_count = results[i]['vote_count'];
+
+           var genres = results[i]['genre_ids']
+          const genre_dict = {10759: 'Action & Adventure', 16: 'Animation', 35: 'Comedy', 80: 'Crime', 99: 'Documentary', 18: 'Drama', 10751: 'Family', 10762: 'Kids', 9648: 'Mystery', 10763: 'News', 10764: 'Reality', 10765: 'Sci-Fi & Fantasy', 10766: 'Soap', 10767: 'Talk', 10768: 'War & Politics', 37: 'Western'}
+          var genre_string = ''
+          if (genres.length != 0){
+            for (var k = 0; k < genres.length; k++) {
+              genre_string += genre_dict[genres[k]];
+              if (k != genres.length - 1){
+                genre_string += ', '
+              }
+              
+            }
+          }
+          else{
+            genre_string = ''
+          }
+
+          //var new_item = '<div class="newline"><br><br><span style="float:left;"> <div style="float:left;" class="rectangle"></div> <br>  &nbsp;&nbsp;<img src="' + poster_url + '" width=185> </span></div>'
+
+          if (overview.length < 100){
+            overview += '<span style="visibility:hidden">ng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng shinng </span>'
+          }
+
+          var new_item = '<div class="newline"><br><br><span style="float:left;"> <div style="float:left;" class="rectangle"></div> <br>  &nbsp;&nbsp;<img src="' + poster_url + '" width=185> </span><div style="float:left;padding-left:30px; width:75%;  "><br><h2>'  + title + ' </h2> <p style="font-size:15px">'+ String(release_date) + ' | '+ genre_string + ' <br> <span style="color:red;"> &#9733; ' + String((Number(vote_average)/2).toFixed(2)) + '/5 </span> &nbsp;'+ String(vote_count) + '  votes<br></p> <p style="width:100%; font-size:14px; white-space:normal;">'+ overview + '  </p><button class="showmore_button" id="myBtn" onclick="showTvDetails('+ results[i]['id'] + ')">Show More</button></div></div>'
+
+          text += new_item;
+
+          //Do something
+      }
+
+
+      if (text == "Showing Results... <br>"){
+        document.getElementById("results").innerHTML = " <br> <br> <span class='newline' style='text-align:center;padding-left:43.5%;white-space:normal;position:relative;'> No Results Found </span> ";
+      }
+      else{
+        document.getElementById("results").innerHTML = text;
+      }
+
+      
+  
+    }).catch(function (err) {
+      // There was an error
+      console.warn('Something went wrong.', err);
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+function loadTrending() {
+  fetch("https://cs571vctmdbapi.azurewebsites.net/trending").then(function (response) {
+      // The API call was successful!
+      return response.json();
+    }).then(function (data) {
+      // This is the JSON from our response
+
+      var trending = data.result;
+
+      const tmdb_url = 'https://image.tmdb.org/t/p/original'
+
+      var img1 = tmdb_url + data.result[0]['backdrop_path']
+      var img2 = tmdb_url + data.result[1]['backdrop_path']
+      var img3 = tmdb_url + data.result[2]['backdrop_path']
+      var img4 = tmdb_url + data.result[3]['backdrop_path']
+      var img5 = tmdb_url + data.result[4]['backdrop_path']
+
+      var date1 = data.result[0]['release_date'].substr(0,4)
+      var date2 = data.result[1]['release_date'].substr(0,4)
+      var date3 = data.result[2]['release_date'].substr(0,4)
+      var date4 = data.result[3]['release_date'].substr(0,4)
+      var date5 = data.result[4]['release_date'].substr(0,4)
+
+
+
+      var title1 = data.result[0]['title'] + ' (' + date1 + ')'
+      var title2 = data.result[1]['title'] + ' (' + date2 + ')'
+      var title3 = data.result[2]['title'] + ' (' + date3 + ')'
+      var title4 = data.result[3]['title'] + ' (' + date4 + ')'
+      var title5 = data.result[4]['title'] + ' (' + date5 + ')'
+
+      var text = '<div class = "slide"> <img width=780 src="'  + img1 + '"> <div class="overlay">'  + title1 + '</div> </div>' 
+      + '<div class = "slide"> <img  width=780 src="'  + img2 + '"> <div class="overlay">'  + title2 + '</div> </div>' 
+      + '<div class = "slide"> <img width=780 src="'  + img3 + '">  <div class="overlay">'  + title3 + '</div> </div>' 
+      + '<div class = "slide"> <img  width=780 src="'  + img4 + '"> <div class="overlay">'  + title4 + '</div> </div>' 
+      + '<div class = "slide"> <img  width=780 src="'  + img5 + '"> <div class="overlay">'  + title5 + '</div> </div>' ;
+
+
+      document.getElementById("Trending").innerHTML = text;
+
+
+      if (myIndex == 0){carousel();}
+
+    }).catch(function (err) {
+      // There was an error
+      console.warn('Something went wrong.', err);
+    });
+}
+
+
+
+function loadAiring() {
+  fetch("https://cs571vctmdbapi.azurewebsites.net/airing").then(function (response) {
+      // The API call was successful!
+      return response.json();
+    }).then(function (data) {
+      // This is the JSON from our response
+
+      var airing = data.result;
+
+      const tmdb_url = 'https://image.tmdb.org/t/p/original'
+
+      var img1 = tmdb_url + data.result[0]['backdrop_path']
+      var img2 = tmdb_url + data.result[1]['backdrop_path']
+      var img3 = tmdb_url + data.result[2]['backdrop_path']
+      var img4 = tmdb_url + data.result[3]['backdrop_path']
+      var img5 = tmdb_url + data.result[4]['backdrop_path']
+
+      var date1 = data.result[0]['first_air_date'].substr(0,4)
+      var date2 = data.result[1]['first_air_date'].substr(0,4)
+      var date3 = data.result[2]['first_air_date'].substr(0,4)
+      var date4 = data.result[3]['first_air_date'].substr(0,4)
+      var date5 = data.result[4]['first_air_date'].substr(0,4)
+
+      var title1 = data.result[0]['name'] + ' (' + date1 + ')'
+      var title2 = data.result[1]['name'] + ' (' + date2 + ')'
+      var title3 = data.result[2]['name'] + ' (' + date3 + ')'
+      var title4 = data.result[3]['name'] + ' (' + date4 + ')'
+      var title5 = data.result[4]['name'] + ' (' + date5 + ')'
+
+
+
+      var text = '<div class = "slide1"> <img width=780 src="'  + img1 + '"> <div class="overlay">'  + title1 + '</div> </div>' 
+      + '<div class = "slide1"> <img  width=780 src="'  + img2 + '"> <div class="overlay">'  + title2 + '</div> </div>' 
+      + '<div class = "slide1"> <img width=780 src="'  + img3 + '">  <div class="overlay">'  + title3 + '</div> </div>' 
+      + '<div class = "slide1"> <img  width=780 src="'  + img4 + '"> <div class="overlay">'  + title4 + '</div> </div>' 
+      + '<div class = "slide1"> <img  width=780 src="'  + img5 + '"> <div class="overlay">'  + title5 + '</div> </div>' ;
+
+
+
+      document.getElementById("Airing").innerHTML = text;
+
+      if (myIndex1 == 0){carousel1();}
+
+    }).catch(function (err) {
+      // There was an error
+      console.warn('Something went wrong.', err);
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function openTab(evt, tabName) {
+  if (myIndex == 0) {
+    if (tabName == "Home"){
+     
+      loadTrending();
+      loadAiring();
+    }
+  }
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+   
+</body>
+</html> 
