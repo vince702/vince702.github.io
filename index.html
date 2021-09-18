@@ -1,1 +1,99 @@
-Hello World
+<!doctype html>
+
+<style>
+  body {
+    background: #00004d ;
+  }
+  #content {
+  color:white;
+  font-family: 'Courier New', Courier, monospace;
+  text-align:left;
+  display: inline;
+  font-size:20px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  color:purple;
+}
+
+.active {
+  background-color: purple;
+  border-radius: 25px;
+
+}
+
+</style>
+
+
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <title>Website</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+
+  <div  id="content">
+
+
+<!-- This nav gives you links to click, which tells the router which route to use (defined in the routes constant in  AppRoutingModule) -->
+<nav style="padding-top:10px; padding-left:10px">
+  <ul>
+    <li><a routerLink="/home-component" routerLinkActive="active">Home</a></li>
+    <li>&nbsp;</li>
+
+    <li>&nbsp;</li>
+
+    <li><a routerLink="/projects-component" routerLinkActive="active">Projects</a></li>
+
+    <li>&nbsp;</li>
+
+    <li>&nbsp;</li>
+
+
+
+    <li><a routerLink="/blog-component" routerLinkActive="active">Blog</a></li>
+
+    <li>&nbsp;</li>
+
+    <li>&nbsp;</li>
+
+    <li><a routerLink="/contact-component" routerLinkActive="active">Contact</a></li>
+
+    <li>&nbsp;</li>
+
+    <li>&nbsp;</li>
+
+    <li><a  >Resume</a></li>
+  </ul>
+</nav>
+
+</div>
+  
+  
+  
+
+</body>
+</html>
